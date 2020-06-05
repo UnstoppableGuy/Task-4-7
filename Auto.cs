@@ -14,15 +14,8 @@ namespace Task_3_5_6_8
     {
         private int maxSpeed;
         private int currentWeight;        
-        public DateTime YearOfIssue;
+        public DateTime YearOfIssue { get; set; }
         public Color Color { get; set; }
-        public Auto(int maxspeed, int weight, Color color, DateTime yearofissue)
-        {
-            MaxSpeed = maxspeed;
-            Weight = weight;
-            Color = color;
-            YearOfIssue = yearofissue;
-        }
         public int MaxSpeed
         {
             set
@@ -53,6 +46,14 @@ namespace Task_3_5_6_8
                 return currentWeight;
             }
         }
+        public Auto(int maxspeed, int weight, Color color, DateTime yearofissue)
+        {
+            MaxSpeed = maxspeed;
+            Weight = weight;
+            Color = color;
+            YearOfIssue = yearofissue;
+        }
+
         virtual public void ShowPeaceInfo()
         {
             Console.WriteLine($"Max Speed :{MaxSpeed}\n" +

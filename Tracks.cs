@@ -16,26 +16,12 @@ namespace Task_3_5_6_8
     {
         public delegate void MethodContainer();
 
-        static public event MethodContainer CanGoAbroad; 
-        public TrackBrend Brend { get; set; }
+        public event MethodContainer CanGoAbroad; 
+
         private int maxLoad;
         private int cost;
         private string carNumber;
-        public Tracks(int maxspeed,
-                      int weight,
-                      Color color,
-                      DateTime dateTime,
-                      TrackBrend brend,
-                      int maxload,
-                      int value,
-                      string carnumber) : base(maxspeed, weight, color, dateTime)
-        {
-            CarNumber = carnumber;
-            Cost = value;
-            Brend = brend;
-            MaxLoad = maxload;
-        }
-        
+        public TrackBrend Brend { get; set; }
         public int MaxLoad
         {
             get { return maxLoad; }
@@ -45,7 +31,7 @@ namespace Task_3_5_6_8
                     maxLoad = 0;
                 else if (value > 2 * Weight)
                     maxLoad = 2 * Weight;
-                else 
+                else
                     maxLoad = value;
             }
         }
@@ -74,6 +60,21 @@ namespace Task_3_5_6_8
                 return carNumber;
             }
         }
+        public Tracks(int maxspeed,
+                      int weight,
+                      Color color,
+                      DateTime dateTime,
+                      TrackBrend brend,
+                      int maxload,
+                      int value,
+                      string carnumber) : base(maxspeed, weight, color, dateTime)
+        {
+            CarNumber = carnumber;
+            Cost = value;
+            Brend = brend;
+            MaxLoad = maxload;
+        }
+
         public void PeaceInfo()
         {
             base.ShowPeaceInfo();
@@ -83,6 +84,7 @@ namespace Task_3_5_6_8
             if (CarNumber == "NaN")
                 CanGoAbroad?.Invoke();
         }
+
         public int CompareTo(Tracks track) => Cost.CompareTo(track.Cost);
 
         public string ToString(string format) => ToString(format, CultureInfo.CurrentCulture);

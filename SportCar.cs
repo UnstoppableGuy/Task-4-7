@@ -17,29 +17,14 @@ namespace Task_3_5_6_8
     {
         public delegate void MethodContainer();
 
-        static public event MethodContainer StealingCar;
+        public event MethodContainer StealingCar;
 
         private int enginePower;
         private string carNumber;
         private int cost;
         public CarBrend Brend { get; set; }
-        public SportCar(int maxspeed,
-                        int weight,
-                        Color color,
-                        DateTime yearofissue,
-                        int enginepower,
-                        string carnumber,
-                        CarBrend brend,
-                        int value) : base(maxspeed, weight, color, yearofissue)
-        {
-            Brend = brend;
-            CarNumber = carnumber;
-            EnginePower = enginepower;
-            Cost = value;
-        }
         public int Cost
         {
-
             set
             {
                 if (value < 250000)
@@ -74,6 +59,21 @@ namespace Task_3_5_6_8
             }
             get { return enginePower; }
         }
+        public SportCar(int maxspeed,
+                        int weight,
+                        Color color,
+                        DateTime yearofissue,
+                        int enginepower,
+                        string carnumber,
+                        CarBrend brend,
+                        int value) : base(maxspeed, weight, color, yearofissue)
+        {
+            Brend = brend;
+            CarNumber = carnumber;
+            EnginePower = enginepower;
+            Cost = value;
+        }
+
         public void PeaceInfo()
         {
             base.ShowPeaceInfo();
@@ -83,6 +83,7 @@ namespace Task_3_5_6_8
             if (CarNumber == "NaN" || Cost == 0)
                 StealingCar?.Invoke();
         }
+
         public int CompareTo(SportCar car) => Cost.CompareTo(car.Cost);
 
         public string ToString(string format) => ToString(format, CultureInfo.CurrentCulture);
